@@ -1,15 +1,27 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from './item-list.model';
+import { Item, ItemA, ItemB } from './item-list.model';
 
 @Component({
-  selector: 'app-item-list',
+  template: '',
+})
+export abstract class ItemListComponent<T extends Item> {
+  @Input()
+  items: T[] = [];
+
+  @Output()
+  itemClick: EventEmitter<T> = new EventEmitter<T>();
+}
+
+@Component({
+  selector: 'app-itema-list',
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss'],
 })
-export class ItemListComponent {
-  @Input()
-  items: Item[] = [];
+export class ItemAListComponent extends ItemListComponent<ItemA> {}
 
-  @Output()
-  itemClick: EventEmitter<Item> = new EventEmitter<Item>();
-}
+@Component({
+  selector: 'app-itemb-list',
+  templateUrl: './item-list.component.html',
+  styleUrls: ['./item-list.component.scss'],
+})
+export class ItemBListComponent extends ItemListComponent<ItemB> {}

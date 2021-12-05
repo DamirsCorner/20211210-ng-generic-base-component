@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Item, ItemA, ItemB } from './item-list/item-list.model';
+import { ItemA, ItemB } from './item-list/item-list.model';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ export class AppComponent {
 
   itemA?: ItemA;
 
-  itemClickA(item: Item) {
-    this.itemA = item as ItemA;
+  itemClickA(item: ItemA) {
+    this.itemA = item;
   }
 
   itemsB: ItemB[] = Array.from({ length: 5 }, (_, id) => ({
@@ -25,7 +25,7 @@ export class AppComponent {
 
   itemB?: ItemB;
 
-  itemClickB(item: Item) {
-    this.itemB = item as ItemB;
+  itemClickB(item: ItemB) {
+    this.itemB = item;
   }
 }
